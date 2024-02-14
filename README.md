@@ -2,6 +2,7 @@
 
 CorgyConnect to platforma blogowa stworzona specjalnie dla miłośników psów! Dzięki CorgyConnect możesz łatwo założyć konto, publikować zdjęcia swojego pupila i dzielić się historiami z innymi pasjonatami czworonogów.
 
+**Uwaga:** Projekt jest obecnie w fazie wczesnego tworzenia i nie jest jeszcze w pełni rozwinięty. Przepraszamy za wszelkie niedogodności i zapraszamy do śledzenia postępów!
 ## Funkcje
 
 - 🐕 **Załóż Konto:** Prosty proces rejestracji umożliwia szybkie stworzenie konta i dołączenie do społeczności DoggieBlog.
@@ -43,5 +44,5 @@ CorgyConnect to platforma blogowa stworzona specjalnie dla miłośników psów! 
 
 ---
 
-**CorgyConnect**  🐶✨
+**CorgyConnect**  🐶✨ 
 
