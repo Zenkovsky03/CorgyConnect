@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% extends 'main.html' %}
+
+{% block content %}
+    <h1>Dogs Template</h1>
+    <hr>
+    <table>
+        <tr>
+            <th>View</th>
+            <th>Dog</th>
+            <th>Votes</th>
+            <th>Positive Votes</th>
+            <th>Description</th>
+        </tr>
+        {% for i in dogs_list %}
+            <tr>
+                <td><a href="{% url 'dog' i.id %}">View</a></td>
+                <td>{{ i.name }}</td>
+                <td>{{ i.vote_total }}</td>
+                <td>{{ i.vote_ratio }}%</td>
+                <td>{{ i.description }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+
+{% endblock content %}
+</body>
+</html>

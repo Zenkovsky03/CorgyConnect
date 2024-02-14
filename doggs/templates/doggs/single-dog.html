@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% extends 'main.html' %}
+
+    {% block content %}
+        <h1>Single dog template</h1>
+        <br>
+        <h2>{{ dogObj.name }}</h2>
+        <p>{{ dogObj.description }}</p>
+        <br>
+        {% for tags in dogObj.tags.all %}
+        	<p>{{ tags.name }}</p>
+        {% endfor %}
+
+    {% endblock content %}
+
+</body>
+</html>
