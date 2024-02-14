@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import Dog
 
 # Create your views here.
-
+#dziala
 def dogs(request):
     dogs = Dog.objects.all()
     context = {
