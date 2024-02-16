@@ -7,12 +7,11 @@
 <body>
     {% extends 'main.html' %}
     {% block content %}
-        <h1>Dog Form</h1>
         <form action="" method="POST">
             {% csrf_token %}
-            {{ form.as_p }}
-
-            <input type="submit">
+            <p>Are you sure you want delete "{{ object }}"?</p>
+            <a href="{% url 'dogs' %}">Go Back</a>
+            <input type="submit" value="Confirm">
         </form>
     {% endblock content %}
 </body>

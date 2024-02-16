@@ -17,6 +17,8 @@
             <th>Votes</th>
             <th>Positive Votes</th>
             <th>Description</th>
+            <th>Update</th>
+            <th>Delete</th>
         </tr>
         {% for i in dogs_list %}
             <tr>
@@ -25,6 +27,8 @@
                 <td>{{ i.vote_total }}</td>
                 <td>{{ i.vote_ratio }}%</td>
                 <td>{{ i.description }}</td>
+                <td><a href="{% url 'update-dog' i.id %}">Update</a></td>
+                <td><a href="{% url 'delete-dog' i.id %}">Delete</a></td>
             </tr>
         {% endfor %}
     </table>

@@ -4,4 +4,4 @@ from .models import Dog
 class DogForm(ModelForm):
     class Meta:
         model = Dog
-        fields = '__all__'
+        fields = ['name','description','wiki_link','tags']
