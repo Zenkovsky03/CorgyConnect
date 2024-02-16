@@ -2,7 +2,6 @@ import uuid
 
 from django.db import models
 
-
 class Dog(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, unique=True, editable=False)
     name = models.CharField(max_length=200)
@@ -12,6 +11,9 @@ class Dog(models.Model):
     tags = models.ManyToManyField('Tag', blank=True)
     vote_total = models.IntegerField(default=0, null=True, blank=True)
     vote_ratio = models.IntegerField(default=0, null=True, blank=True)
+    #ilness
+    #rasa
+    #czy ogon
 
     def __str__(self):
         return self.name

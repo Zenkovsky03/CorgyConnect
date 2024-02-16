@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% extends 'main.html' %}
+    {% block content %}
+        <h1>Dog Form</h1>
+        <form action="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <input type="submit">
+        </form>
+    {% endblock content %}
+</body>
+</html>

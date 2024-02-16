@@ -22,7 +22,7 @@ CorgyConnect to platforma blogowa stworzona specjalnie dla miłośników psów! 
 
 ## Instalacja i Uruchamianie
 
-1. Sklonuj repozytorium: `git clone https://github.com/TwojaNazwaUzytkownika/DoggieBlog.git`
+1. Sklonuj repozytorium: `git clone https://github.com/TwojaNazwaUzytkownika/CorgyConnect.git`
 
 2. Przejdź do katalogu projektu: `cd CorgyConnect`
 
