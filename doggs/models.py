@@ -11,10 +11,7 @@ class Dog(models.Model):
     tags = models.ManyToManyField('Tag', blank=True)
     vote_total = models.IntegerField(default=0, null=True, blank=True)
     vote_ratio = models.IntegerField(default=0, null=True, blank=True)
-    #ilness
-    #rasa
-    #czy ogon
-
+    featured_image = models.ImageField(null=True, blank=True, default="default.jpg")
     def __str__(self):
         return self.name
 

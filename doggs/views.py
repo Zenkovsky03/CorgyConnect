@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 from .models import Dog
 from .forms import DogForm
+
+
 # Create your views here.
-#dziala
+# dziala
 def dogs(request):
     dogs = Dog.objects.all()
     context = {
@@ -18,10 +20,11 @@ def dog(request, pk):
     }
     return render(request, 'doggs/single-dog.html', context)
 
+
 def createDog(request):
     form = DogForm()
     if request.method == 'POST':
-        form = DogForm(request.POST)
+        form = DogForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('dogs')
@@ -30,11 +33,12 @@ def createDog(request):
     }
     return render(request, 'doggs/dog_form.html', context)
 
+
 def updateDog(request, pk):
     dogObj = Dog.objects.get(id=pk)
     form = DogForm(instance=dogObj)
     if request.method == 'POST':
-        form = DogForm(request.POST,  instance=dogObj)
+        form = DogForm(request.POST, request.FILES, instance=dogObj)
         if form.is_valid():
             form.save()
             return redirect('dogs')
@@ -42,6 +46,7 @@ def updateDog(request, pk):
         'form': form,
     }
     return render(request, 'doggs/dog_form.html', context)
+
 
 def deleteDog(request, pk):
     dogObj = Dog.objects.get(id=pk)

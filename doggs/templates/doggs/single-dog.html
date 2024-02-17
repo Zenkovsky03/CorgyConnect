@@ -8,6 +8,7 @@
     {% extends 'main.html' %}
 
     {% block content %}
+        <img src="{{ dogObj.featured_image.url }}">
         <h1>Single dog template</h1>
         <br>
         <h2>{{ dogObj.name }}</h2>
