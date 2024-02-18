@@ -1,24 +1,80 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    {% extends 'main.html' %}
+{% extends 'main.html' %}
+{% block content %}
 
-    {% block content %}
-        <img src="{{ dogObj.featured_image.url }}">
-        <h1>Single dog template</h1>
-        <br>
-        <h2>{{ dogObj.name }}</h2>
-        <p>{{ dogObj.description }}</p>
-        <br>
-        {% for tags in dogObj.tags.all %}
-        	<p>{{ tags.name }}</p>
-        {% endfor %}
+  <!-- Main Section -->
+  <main class="singleProject my-md">
+    <div class="container">
+      <div class="layout">
+        <div class="column column--1of3">
+          <h3 class="singleProject__subtitle">Advantages</h3>
+          <div class="singleProject__toolStack">
+              {% for tags in dogObj.tags.all %}
+                <span class="tag tag--pill tag--sub tag--lg">
+                  <small>{{ tags.name }}</small>
+                </span>
+              {% endfor %}
+          </div>
+           {% if dogObj.wiki_link  %}
+           	    <a class="singleProject__liveLink" href="{{ dogObj.wiki_link }}" target="_blank"><i class="im im-external-link"></i>Wiki link</a>
+           {% endif %}
+        </div>
+        <div class="column column--2of3">
+          <img class="singleProject__preview" src="{{ dogObj.featured_image.url }}" alt="portfolio thumbnail" />
+          <a href="#" class="singleProject__developer">{{ dogObj.owner.name }}</a>
+          <h2 class="singleProject__title">{{ dogObj.name }}</h2>
+          <h3 class="singleProject__subtitle">About the Dog</h3>
+          <div class="singleProject__info">{{ dogObj.description }}</div>
 
-    {% endblock content %}
 
-</body>
-</html>
+          <div class="comments">
+            <h3 class="singleProject__subtitle">Feedback</h3>
+            <h5 class="project--rating">
+                {{ dogObj.vote_ratio }}% Postitive Feedback ({{ dogObj.vote_total }} Vote{{ dogObj.vote_total|pluralize:"s"}})
+            </h5>
+
+            <form class="form" action="#" method="POST">
+              <!-- Textarea -->
+              <div class="form__field">
+                <label for="formInput#textarea">Comments: </label>
+                <textarea class="input input--textarea" name="message" id="formInput#textarea"
+                  placeholder="Write your comments here..."></textarea>
+              </div>
+              <input class="btn btn--sub btn--lg" type="submit" value="Comments" />
+            </form>
+            <div class="commentList">
+              <div class="comment">
+                <a href="#">
+                  <img class="avatar avatar--md"
+                    src="#" alt="user" />
+                </a>
+                <div class="comment__details">
+                  <a href="#" class="comment__author">COMMENT NAME</a>
+                  <p class="comment__info">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit alias numquam perferendis
+                    mollitia minus minima exercitationem possimus ab deserunt qui, soluta iusto doloribus eveniet
+                    similique consequuntur ratione, dignissimos ut magni laborum quo.
+                  </p>
+                </div>
+              </div>
+              <div class="comment">
+                <a href="#">
+                  <img class="avatar avatar--md" src="#" alt="user" />
+                </a>
+                <div class="comment__details">
+                  <a href="#" class="comment__author">COMMENT NAME</a>
+                  <p class="comment__info">
+                    Consectetur adipisicing elit. Reprehenderit alias numquam perferendis mollitia minus minima
+                    exercitationem possimus ab deserunt qui, ratione, dignissimos ut magni laborum quo.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </main>
+
+{% endblock content %}
+

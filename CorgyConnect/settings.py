@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'doggs.apps.DoggsConfig',
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [

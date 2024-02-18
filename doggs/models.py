@@ -1,8 +1,10 @@
 import uuid
+from users.models import Profile
 
 from django.db import models
 
 class Dog(models.Model):
+    owner = models.ForeignKey(Profile, null=True, blank=True, on_delete=models.SET_NULL)
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, unique=True, editable=False)
     name = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)

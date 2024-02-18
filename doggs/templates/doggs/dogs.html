@@ -1,39 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
 {% extends 'main.html' %}
-
 {% block content %}
-    <h1>Dogs Template</h1>
-    <hr>
-    <table>
-        <tr>
-            <th>View</th>
-            <th>Dog</th>
-            <th>Votes</th>
-            <th>Positive Votes</th>
-            <th>Description</th>
-            <th>Update</th>
-            <th>Delete</th>
-        </tr>
-        {% for i in dogs_list %}
-            <tr>
-                <td><a href="{% url 'dog' i.id %}">View</a></td>
-                <td>{{ i.name }}</td>
-                <td>{{ i.vote_total }}</td>
-                <td>{{ i.vote_ratio }}%</td>
-                <td>{{ i.description }}</td>
-                <td><a href="{% url 'update-dog' i.id %}">Update</a></td>
-                <td><a href="{% url 'delete-dog' i.id %}">Delete</a></td>
-            </tr>
-        {% endfor %}
-    </table>
-
-
+{#            <td><a href="{% url 'update-dog' i.id %}">Update</a></td>#}
+{#            <td><a href="{% url 'delete-dog' i.id %}">Delete</a></td>#}
+  <!-- Main Section -->
+  <main class="projects">
+    <section class="hero-section text-center">
+      <div class="container container--narrow">
+        <div class="hero-section__box"><h2>Search for <span>Dogs</span></h2></div>
+        <div class="hero-section__search">
+          <form class="form" action="#" method="get">
+            <div class="form__field">
+              <label for="formInput#search">Search By Dogs </label>
+              <input class="input input--text" id="formInput#search" type="text" name="text" placeholder="Search by Dogs Name" />
+            </div>
+            <input class="btn btn--sub btn--lg" type="submit" value="Search" />
+          </form>
+        </div>
+      </div>
+    </section>
+    <!-- Search Result: DevList -->
+    <section class="projectsList">
+      <div class="container">
+        <div class="grid grid--three">
+            {% for i in dogs_list %}
+              <div class="column">
+                <div class="card project">
+                  <a href="{% url 'dog' i.id %}" class="project">
+                    <img class="project__thumbnail" src="{{ i.featured_image.url }}" alt="dog thumbnail" />
+                    <div class="card__body">
+                      <h3 class="project__title">{{ i.name }}</h3>
+                      <p><a class="project__author" href="profile.html">By {{ i.owner.name }}</a></p>
+                      <p class="project--rating"><span style="font-weight: bold;">{{ i.vote_ratio }}%</span> Posittive Feedback ({{ i.vote_total }} Vote{{ i.vote_total|pluralize:"s" }})</p>
+                      <div class="project__tags">
+                          {% for tag in i.tags.all %}
+                              <span class="tag tag--pill tag--main"><small>{{ tag }}</small></span>
+                          {% endfor %}
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            {% endfor %}
+        </div>
+      </div>
+    </section>
+  </main>
 {% endblock content %}
-</body>
-</html>
