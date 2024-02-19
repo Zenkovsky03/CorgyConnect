@@ -29,7 +29,7 @@
                     <img class="project__thumbnail" src="{{ i.featured_image.url }}" alt="dog thumbnail" />
                     <div class="card__body">
                       <h3 class="project__title">{{ i.name }}</h3>
-                      <p><a class="project__author" href="profile.html">By {{ i.owner.name }}</a></p>
+                      <p><a class="project__author" href="{% url 'user-profile' i.owner.id %}">By {{ i.owner.name }}</a></p>
                       <p class="project--rating"><span style="font-weight: bold;">{{ i.vote_ratio }}%</span> Posittive Feedback ({{ i.vote_total }} Vote{{ i.vote_total|pluralize:"s" }})</p>
                       <div class="project__tags">
                           {% for tag in i.tags.all %}
