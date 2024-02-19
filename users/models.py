@@ -2,7 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 import uuid
 # Create your models here.
-
+from django.db.models.signals import post_save, post_delete
+from django.dispatch import receiver
 class Profile(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, unique=True, editable=False)
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
@@ -33,3 +34,4 @@ class Skill(models.Model):
 
     def __str__(self):
         return self.name
+
