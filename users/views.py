@@ -5,7 +5,9 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from .forms import CustomUserCreationForm
 def loginUser(request):
+    page = 'login'
     if request.user.is_authenticated:
         return redirect('profiles')
 
@@ -37,6 +39,26 @@ def profiles(request):
         'profiles': profiles,
     }
     return render(request, 'users/profiles.html', context)
+
+def registerUser(request):
+    page = 'register'
+    form = CustomUserCreationForm()
+    if request.method == 'POST':
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False) # obiekt jeszcze nie jest zapisany do bazy ale jest do manipulowania typu zmiana wszystkich liter na male
+            user.username = user.username.lower()
+            user.save()
+            messages.success(request, "User Account was created successfully")
+            login(request, user)
+            return redirect('profiles')
+        else:
+            messages.error(request,"An error has occurred during registration")
+    context = {
+        'page':page,
+        'form':form,
+    }
+    return render(request, 'users/login_register.html', context)
 
 def userProfile(request, pk):
     profile = Profile.objects.get(id=pk)
