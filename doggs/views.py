@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Dog
 from .forms import DogForm
-
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 # dziala
@@ -20,7 +20,7 @@ def dog(request, pk):
     }
     return render(request, 'doggs/single-dog.html', context)
 
-
+@login_required(login_url='login')
 def createDog(request):
     form = DogForm()
     if request.method == 'POST':
@@ -33,7 +33,7 @@ def createDog(request):
     }
     return render(request, 'doggs/dog_form.html', context)
 
-
+@login_required(login_url='login')
 def updateDog(request, pk):
     dogObj = Dog.objects.get(id=pk)
     form = DogForm(instance=dogObj)
@@ -47,7 +47,7 @@ def updateDog(request, pk):
     }
     return render(request, 'doggs/dog_form.html', context)
 
-
+@login_required(login_url='login')
 def deleteDog(request, pk):
     dogObj = Dog.objects.get(id=pk)
     if request.method == 'POST':
