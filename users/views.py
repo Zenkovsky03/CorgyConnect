@@ -19,6 +19,7 @@ def loginUser(request):
             user = User.objects.get(username=username)
         except:
             messages.error(request,"Username doesnt exist")
+
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
@@ -28,11 +29,11 @@ def loginUser(request):
 
     return render(request, 'users/login_register.html')
 
-
 def logoutUser(request):
     logout(request)
-    messages.success(request, "User was logout successfully")
+    messages.info(request, "User was logout successfully")
     return redirect('login')
+
 def profiles(request):
     profiles = Profile.objects.all()
     context = {
@@ -70,3 +71,15 @@ def userProfile(request, pk):
         'otherSkills':otherSkills,
     }
     return render(request, 'users/user-profile.html', context)
+
+@login_required(login_url='login')
+def userAccount(request):
+    profile = request.user.profile
+    skills = profile.skill_set.all()
+    dogs = profile.dog_set.all()
+    context = {
+        'profile': profile,
+        'skills': skills,
+        'dogs':dogs,
+    }
+    return render(request, 'users/account.html', context)
