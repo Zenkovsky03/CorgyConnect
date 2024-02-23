@@ -30,7 +30,7 @@ def createDog(request):
             dog = form.save(commit=False)
             dog.owner = profile
             dog.save()
-            return redirect('dogs')
+            return redirect('account')
     context = {
         'form': form,
     }
@@ -57,8 +57,8 @@ def deleteDog(request, pk):
     dogObj = profile.dog_set.get(id=pk)
     if request.method == 'POST':
         dogObj.delete()
-        return redirect('dogs')
+        return redirect('account')
     context = {
         'object': dogObj
     }
-    return render(request, 'doggs/delete_object.html', context)
+    return render(request, 'delete_object.html', context)
