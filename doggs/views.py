@@ -3,12 +3,37 @@ from .models import Dog, Tag
 from .forms import DogForm
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from .utils import searchDogs
 def dogs(request):
     dogs, search_query = searchDogs(request)
+
+    page = request.GET.get('page') #ktora strona
+    results = 3 #ile obiektow na stronie
+    paginator = Paginator(dogs, results) # wywolanie
+    try:
+        dogs = paginator.page(page)
+    except PageNotAnInteger: #jesli np nie podamy zadnej strony albo wartosc ujemna etc
+        page = 1
+        dogs = paginator.page(page)
+    except EmptyPage: #jesli wychodzi poza zakres stron
+        page = paginator.num_pages
+        dogs = paginator.page(page)
+
+    leftIndex = (int(page) - 4)
+    if leftIndex < 1:
+        leftIndex = 1
+    rightIndex = (int(page) + 5)
+
+    if rightIndex > paginator.num_pages:
+        rightIndex = paginator.num_pages + 1
+
+    custom_range = range(leftIndex, rightIndex)
     context = {
         'dogs_list': dogs,
-        'search_query': search_query
+        'search_query': search_query,
+        'paginator': paginator,
+        'custom_range': custom_range,
     }
     return render(request, 'doggs/dogs.html', context)
 
