@@ -1,14 +1,14 @@
 from django.shortcuts import render, redirect
-from .models import Dog
+from .models import Dog, Tag
 from .forms import DogForm
 from django.contrib.auth.decorators import login_required
-
-# Create your views here.
-# dziala
+from django.db.models import Q
+from .utils import searchDogs
 def dogs(request):
-    dogs = Dog.objects.all()
+    dogs, search_query = searchDogs(request)
     context = {
         'dogs_list': dogs,
+        'search_query': search_query
     }
     return render(request, 'doggs/dogs.html', context)
 
