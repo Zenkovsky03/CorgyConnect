@@ -13,3 +13,5 @@ if(searchForm){
         })
     }
 }
+//to dziala tak ze preventDefault nie przeladowywuje strony i my przez klikniecie przekazujemy page czyli numer strony i wteyd na danej stronie dalej mamy search wynik ktory chcemy
+//sztuczne przeladowanie storny

@@ -32,42 +32,30 @@
                 {{ dogObj.vote_ratio }}% Postitive Feedback ({{ dogObj.vote_total }} Vote{{ dogObj.vote_total|pluralize:"s"}})
             </h5>
 
-            <form class="form" action="#" method="POST">
-              <!-- Textarea -->
-              <div class="form__field">
-                <label for="formInput#textarea">Comments: </label>
-                <textarea class="input input--textarea" name="message" id="formInput#textarea"
-                  placeholder="Write your comments here..."></textarea>
-              </div>
+            <form class="form" action="{% url 'dog' dogObj.id %}" method="POST">
+              {% csrf_token %}
+              {% for field in form %}
+                  <div class="form__field">
+                    <label for="formInput#textarea">{{ field.label }}</label>
+                    {{ field }}
+                  </div>
+              {% endfor %}
               <input class="btn btn--sub btn--lg" type="submit" value="Comments" />
             </form>
             <div class="commentList">
-              <div class="comment">
-                <a href="#">
-                  <img class="avatar avatar--md"
-                    src="#" alt="user" />
-                </a>
-                <div class="comment__details">
-                  <a href="#" class="comment__author">COMMENT NAME</a>
-                  <p class="comment__info">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit alias numquam perferendis
-                    mollitia minus minima exercitationem possimus ab deserunt qui, soluta iusto doloribus eveniet
-                    similique consequuntur ratione, dignissimos ut magni laborum quo.
-                  </p>
-                </div>
-              </div>
-              <div class="comment">
-                <a href="#">
-                  <img class="avatar avatar--md" src="#" alt="user" />
-                </a>
-                <div class="comment__details">
-                  <a href="#" class="comment__author">COMMENT NAME</a>
-                  <p class="comment__info">
-                    Consectetur adipisicing elit. Reprehenderit alias numquam perferendis mollitia minus minima
-                    exercitationem possimus ab deserunt qui, ratione, dignissimos ut magni laborum quo.
-                  </p>
-                </div>
-              </div>
+              {% for review in dogObj.review_set.all %}
+                  {% if review.body %}
+                      <div class="comment">
+                        <a href="{% url 'user-profile' review.owner.id %}">
+                          <img class="avatar avatar--md" src="{{ review.owner.profile_image.url }}" alt="user" />
+                        </a>
+                        <div class="comment__details">
+                          <a href="{% url 'user-profile' review.owner.id %}" class="comment__author">{{ review.owner.name }}</a>
+                          <p class="comment__info">{{ review.body|linebreaksbr }}</p>
+                        </div>
+                      </div>
+                  {% endif %}
+              {% endfor %}
             </div>
           </div>
         </div>

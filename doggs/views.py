@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from .models import Dog, Tag
-from .forms import DogForm
+from .forms import DogForm, ReviewForm
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from django.db.models import Q
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from .utils import searchDogs, paginateDogs
@@ -18,8 +19,22 @@ def dogs(request):
 
 def dog(request, pk):
     dogObj = Dog.objects.get(id=pk)
+    form = ReviewForm()
+
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.dog = dogObj
+            review.owner = request.user.profile
+            review.save()
+
+            dogObj.getVoteCount
+            messages.success(request, 'Your review was successfully submitted.')
+            return redirect('dog', pk=dogObj.id)
     context = {
-        'dogObj': dogObj
+        'dogObj': dogObj,
+        'form': form,
     }
     return render(request, 'doggs/single-dog.html', context)
 
