@@ -18,7 +18,7 @@ class Dog(models.Model):
         return self.name
 
     class Meta:
-        ordering = ['created']
+        ordering = ['-vote_ratio', '-vote_total', 'name']
     @property
     def getVoteCount(self):
         reviews = self.review_set.all()
@@ -30,6 +30,11 @@ class Dog(models.Model):
         self.vote_ratio = ratio
 
         self.save()
+    @property
+    def reviewers(self):
+        queryset = self.review_set.all().values_list('owner__id', flat=True)
+        return queryset
+
 class Review(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, unique=True, editable=False)
     owner = models.ForeignKey(Profile, null=True, on_delete=models.CASCADE)
@@ -44,6 +49,7 @@ class Review(models.Model):
 
     class Meta:
         unique_together = [['owner', 'dog']]
+
 
     def __str__(self):
         return self.value

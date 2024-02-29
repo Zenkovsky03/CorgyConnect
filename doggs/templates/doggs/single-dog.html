@@ -31,17 +31,24 @@
             <h5 class="project--rating">
                 {{ dogObj.vote_ratio }}% Postitive Feedback ({{ dogObj.vote_total }} Vote{{ dogObj.vote_total|pluralize:"s"}})
             </h5>
-
-            <form class="form" action="{% url 'dog' dogObj.id %}" method="POST">
-              {% csrf_token %}
-              {% for field in form %}
-                  <div class="form__field">
-                    <label for="formInput#textarea">{{ field.label }}</label>
-                    {{ field }}
-                  </div>
-              {% endfor %}
-              <input class="btn btn--sub btn--lg" type="submit" value="Comments" />
-            </form>
+                {% if request.user.profile.id in dogObj.reviewers %}
+                    <p>You have already submitted your review for this dog</p>
+                {% elif request.user.profile == dogObj.owner  %}
+                    <p>You cannot review your own dog</p>
+                {% elif request.user.is_authenticated %}
+                    <form class="form" action="{% url 'dog' dogObj.id %}" method="POST">
+                      {% csrf_token %}
+                      {% for field in form %}
+                          <div class="form__field">
+                            <label for="formInput#textarea">{{ field.label }}</label>
+                            {{ field }}
+                          </div>
+                      {% endfor %}
+                      <input class="btn btn--sub btn--lg" type="submit" value="Comments" />
+                    </form>
+                {% else %}
+                    <a href="{% url 'login' %}?next={{ request.path }}">Please login to leave a review</a>
+                {% endif %}
             <div class="commentList">
               {% for review in dogObj.review_set.all %}
                   {% if review.body %}
