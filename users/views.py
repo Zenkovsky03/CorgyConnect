@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Profile, Skill
+from .models import Profile, Skill, Message
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -14,7 +14,7 @@ def loginUser(request):
 
     if request.method == 'POST':
         print(request.POST)
-        username = request.POST['username'].lower()
+        username = request.POST['username']
         password = request.POST['password']
         try:
             user = User.objects.get(username=username)
@@ -118,7 +118,6 @@ def createSkill(request):
     }
     return render(request, 'users/skill-form.html', context)
 
-
 def updateSkill(request, pk):
     profile = request.user.profile
     skill = profile.skill_set.get(id=pk)
@@ -133,7 +132,7 @@ def updateSkill(request, pk):
         'form': form,
     }
     return render(request, 'users/skill-form.html', context)
-
+@login_required(login_url='login')
 def deleteSkill(request, pk):
     profile = request.user.profile
     skill = profile.skill_set.get(id=pk)
@@ -145,3 +144,24 @@ def deleteSkill(request, pk):
         'object': skill,
     }
     return render(request, 'delete_object.html', context)
+@login_required(login_url='login')
+def inbox(request):
+    profile = request.user.profile
+    messageRequests = profile.messages.all()
+    unreadMessages = messageRequests.filter(is_read=False).count()
+    context = {
+        'messageRequests': messageRequests,
+        'unreadMessages': unreadMessages,
+    }
+    return render(request, 'users/inbox.html', context)
+@login_required(login_url='login')
+def viewMessage(request, pk):
+    profile = request.user.profile
+    message = profile.messages.get(id=pk)
+    if message.is_read == False:
+        message.is_read = True
+        message.save()
+    context = {
+        'message': message,
+    }
+    return render(request, 'users/message.html', context)
