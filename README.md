@@ -15,10 +15,7 @@ CorgyConnect to platforma blogowa stworzona specjalnie dla miłośników psów! 
 
 ## Wymagania Techniczne
 
-- Python 3.x
-- Django
-- Django REST framework
-- MongoDB lub inna baza danych (zależnie od preferencji)
+
 
 ## Instalacja i Uruchamianie
 
