@@ -13,6 +13,8 @@ CorgyConnect to platforma blogowa stworzona specjalnie dla miłośników psów! 
 
 - 🤝 **Społeczność:** Komunikuj się z innymi miłośnikami psów, zostawiaj komentarze, lajkuj posty i buduj społeczność online.
 
+- i wiele inych 
+
 ## Wymagania Techniczne
 
 
