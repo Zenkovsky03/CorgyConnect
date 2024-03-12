@@ -40,6 +40,8 @@ INSTALLED_APPS = [
 
     'doggs.apps.DoggsConfig',
     'users.apps.UsersConfig',
+
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
