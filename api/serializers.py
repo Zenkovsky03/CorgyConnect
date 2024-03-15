@@ -2,10 +2,6 @@ from rest_framework import serializers
 from doggs.models import Dog, Tag, Review
 from users.models import Profile
 
-
-
-
-
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
@@ -20,7 +16,7 @@ class ProfileSerializer(serializers.ModelSerializer):
 class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
-        fields = '__all__'
+        exclude = ['dog']
 
 
 class DogSerializer(serializers.ModelSerializer):
@@ -30,6 +26,7 @@ class DogSerializer(serializers.ModelSerializer):
     class Meta:
         model = Dog
         fields = '__all__'
+
 
     def get_reviews(self, obj):
         reviews = obj.review_set.all()
