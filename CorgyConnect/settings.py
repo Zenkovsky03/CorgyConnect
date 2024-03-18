@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
 
     'rest_framework',
+
+    'corsheaders',
 ]
 
 REST_FRAMEWORK = {
@@ -103,6 +105,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'corsheaders.middleware.CorsMiddleware',
+    # 'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'CorgyConnect.urls'
@@ -177,6 +182,8 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'corgyconnect@gmail.com'
 
 
+
+CORS_ORIGIN_ALLOW_ALL = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
