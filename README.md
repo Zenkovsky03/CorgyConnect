@@ -1,10 +1,10 @@
 ## 🐾 Witaj w CogyConnect! 🐾
 
-CogyConnect to miejsce, które łączy pasjonatów czworonogów! Nasza aplikacja internetowa pozwala Ci nie tylko odkrywać różnorodne psiaki, ale także aktywnie uczestniczyć w naszej przyjaznej społeczności.
+CogyConnect to miejsce, które łączy pasjonatów czworonogów! Moja aplikacja internetowa pozwala Ci nie tylko odkrywać różnorodne psiaki, ale także aktywnie uczestniczyć w naszej przyjaznej społeczności.
 
 ### O Projekcie
 
-CogyConnect jest projektem stworzonym z myślą o wszystkich miłośnikach psów. Naszym celem jest zapewnienie platformy, która umożliwia dzielenie się informacjami o swoich ukochanych zwierzętach, a także integrację z innymi osobami, które podzielają tę samą pasję.
+CogyConnect jest projektem stworzonym z myślą o wszystkich miłośnikach psów. Moim celem jest zapewnienie platformy, która umożliwia dzielenie się informacjami o swoich ukochanych zwierzętach, a także integrację z innymi osobami, które podzielają tę samą pasję.
 
 ### Funkcjonalności
 
