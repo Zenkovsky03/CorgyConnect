@@ -1,8 +1,4 @@
-
-🐾 Witaj w CogyConnect! 🐾
-CogyConnect to miejsce, które łączy pasjonatów czworonogów! Nasza aplikacja internetowa pozwala Ci nie tylko odkrywać różnorodne psiaki, ale także aktywnie uczestniczyć w naszej przyjaznej społeczności.
-
-O Projekcie## 🐾 Witaj w CogyConnect! 🐾
+## 🐾 Witaj w CogyConnect! 🐾
 
 CogyConnect to miejsce, które łączy pasjonatów czworonogów! Nasza aplikacja internetowa pozwala Ci nie tylko odkrywać różnorodne psiaki, ale także aktywnie uczestniczyć w naszej przyjaznej społeczności.
 
@@ -42,8 +38,6 @@ CogyConnect jest projektem stworzonym z myślą o wszystkich miłośnikach psów
 4. **Uruchom aplikację**: Wykonaj `python manage.py runserver`.
 5. **Zacznij eksplorację**: Przejdź pod adres `http://localhost:8000/` i zacznij korzystać z CogyConnect!
 
-### Licencja
 
-Ten projekt jest dostępny na licencji MIT - szczegóły znajdziesz w pliku [LICENSE](LICENSE).
 
-### DZIEKIII
+### DZIEKIIII
