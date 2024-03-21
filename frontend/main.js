@@ -1,6 +1,26 @@
 console.log("dziala");
 
 
+// LOGIN LOGOUT FUNCTIONALITY
+
+let loginButton = document.getElementById('login-button')
+let logoutButton = document.getElementById('logout-button')
+
+let token = localStorage.getItem('token')
+
+if(token){
+    loginButton.remove()
+}else{
+    logoutButton.remove()
+}
+logoutButton.addEventListener('click', (e) => {
+    e.preventDefault()
+    localStorage.removeItem('token')
+    window.location = "file:///D:/PROJEKTY/CorgyConnect/frontend/login.html"
+})
+
+// FETCHING DATA TO DISPLAY IN TEMPLATE
+
 let dogsUrl = "http://127.0.0.1:8000/api/dogs/"
 let getDogs = () =>{
     fetch(dogsUrl)
@@ -34,7 +54,7 @@ let displayDogs = (dogsJson) =>{
     }
     addVoteEvents()
 }
-
+// FETCHING CURRENT DOG TO VOTE
 let addVoteEvents = () => {
     let voteButtons = document.getElementsByClassName("vote--option")
     for(let i = 0; i < voteButtons.length; i++){
