@@ -43,11 +43,15 @@ def createDog(request):
     profile = request.user.profile
     form = DogForm()
     if request.method == 'POST':
+        newTags = request.POST.get('newTags').replace(",", " ").split()
         form = DogForm(request.POST, request.FILES)
         if form.is_valid():
             dog = form.save(commit=False)
             dog.owner = profile
             dog.save()
+            for tag in newTags:
+                tag, created = Tag.objects.get_or_create(name=tag)
+                dog.tags.add(tag)
             return redirect('account')
     context = {
         'form': form,
@@ -60,9 +64,13 @@ def updateDog(request, pk):
     dogObj = profile.dog_set.get(id=pk)
     form = DogForm(instance=dogObj)
     if request.method == 'POST':
+        newTags = request.POST.get('newTags').replace(",", " ").split()
         form = DogForm(request.POST, request.FILES, instance=dogObj)
         if form.is_valid():
-            form.save()
+            dog = form.save()
+            for tag in newTags:
+                tag, created = Tag.objects.get_or_create(name=tag)
+                dog.tags.add(tag)
             return redirect('dogs')
     context = {
         'form': form,

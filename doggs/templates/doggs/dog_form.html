@@ -5,7 +5,7 @@
 <main class="formPage my-xl">
     <div class="content-box">
         <div class="formWrapper">
-            <a class="backButton" href="#">BACK</a><br>
+            <a class="backButton" href="{% url 'account' %}">BACK</a><br>
             <form class="form" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <!-- Input:Text -->
@@ -15,6 +15,10 @@
                         {{ field }}
                     </div>
                 {% endfor %}
+                <div class="form__field">
+                    <label for="formInput#text">Custom Tags</label>
+                    <textarea class="input" name="newTags" placeholder="Add tags here"></textarea>
+                </div>
                 <input class="btn btn--sub btn--lg  my-md" type="submit" value="Submit" />
             </form>
         </div>

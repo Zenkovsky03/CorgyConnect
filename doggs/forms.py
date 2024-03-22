@@ -5,7 +5,7 @@ from django import forms
 class DogForm(ModelForm):
     class Meta:
         model = Dog
-        fields = ['name', 'description', 'wiki_link', 'tags', 'featured_image']
+        fields = ['name', 'description', 'wiki_link', 'featured_image']
         widgets = {
             'tags': forms.CheckboxSelectMultiple()
         }
