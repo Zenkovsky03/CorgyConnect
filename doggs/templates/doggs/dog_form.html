@@ -15,6 +15,15 @@
                         {{ field }}
                     </div>
                 {% endfor %}
+
+                <div class="form__field">
+                    {% for tag in dogObj.tags.all %}
+                        <div class="project-tag tag tag--pill tag--main " data-tag="{{ tag.id }}" data-dog="{{ dogObj.id }}">{{ tag.name }} &#215;</div>
+                    {% endfor %}
+
+                </div>
+
+
                 <div class="form__field">
                     <label for="formInput#text">Custom Tags</label>
                     <textarea class="input" name="newTags" placeholder="Add tags here"></textarea>

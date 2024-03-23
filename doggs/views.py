@@ -74,6 +74,7 @@ def updateDog(request, pk):
             return redirect('dogs')
     context = {
         'form': form,
+        'dogObj': dogObj,
     }
     return render(request, 'doggs/dog_form.html', context)
 

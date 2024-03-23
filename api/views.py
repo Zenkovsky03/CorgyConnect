@@ -2,7 +2,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from .serializers import DogSerializer
-from doggs.models import Dog, Review
+from doggs.models import Dog, Review, Tag
 @api_view(['GET'])
 def getRoutes(request):
 
@@ -50,3 +50,14 @@ def dogVote(request, pk):
     dog.getVoteCount
     serializer = DogSerializer(dog, many=False)
     return Response(serializer.data)
+
+@api_view(['DELETE'])
+def removeTag(request): #usunac tag z danego obiektu a nie usunac ogolnie
+    tagID = request.data['tag']
+    dogID = request.data['dog']
+
+    dog = Dog.objects.get(id=dogID)
+    tag = Tag.objects.get(id=tagID)
+
+    dog.tags.remove(tag)
+    return Response("Tag was deleted!!!")
