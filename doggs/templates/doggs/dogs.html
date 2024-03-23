@@ -26,7 +26,7 @@
               <div class="column">
                 <div class="card project">
                   <a href="{% url 'dog' i.id %}" class="project">
-                    <img class="project__thumbnail" src="{{ i.featured_image.url }}" alt="dog thumbnail" />
+                    <img class="project__thumbnail" src="{{ i.imageURL }}" alt="dog thumbnail" />
                     <div class="card__body">
                       <h3 class="project__title">{{ i.name }}</h3>
                       <p><a class="project__author" href="{% url 'user-profile' i.owner.id %}">By {{ i.owner.name }}</a></p>

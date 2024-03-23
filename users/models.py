@@ -24,6 +24,14 @@ class Profile(models.Model):
     def __str__(self):
         return str(self.user.username)
 
+    @property
+    def imageURL(self):
+        try:
+            url= self.profile_image.url
+        except:
+            url = " "
+        return url
+
 
 class Skill(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, unique=True, editable=False)

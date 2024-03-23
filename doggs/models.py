@@ -4,7 +4,7 @@ from users.models import Profile
 from django.db import models
 
 class Dog(models.Model):
-    owner = models.ForeignKey(Profile, null=True, blank=True, on_delete=models.SET_NULL)
+    owner = models.ForeignKey(Profile, null=True, blank=True, on_delete=models.CASCADE)
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, unique=True, editable=False)
     name = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
@@ -19,6 +19,14 @@ class Dog(models.Model):
 
     class Meta:
         ordering = ['-vote_ratio', '-vote_total', 'name']
+
+    @property
+    def imageURL(self):
+        try:
+            url= self.featured_image.url
+        except:
+            url = " "
+        return url
     @property
     def getVoteCount(self):
         reviews = self.review_set.all()
