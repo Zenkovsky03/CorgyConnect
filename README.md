@@ -29,7 +29,8 @@ CogyConnect jest projektem stworzonym z myślą o wszystkich miłośnikach psów
 - CSS
 - Jinja
 - JavaScript
-- 
+
+
 
 ### Jak Zacząć?
 
