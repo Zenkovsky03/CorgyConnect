@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'rest_framework',
 
     'corsheaders',
+
+    'storages',
 ]
 
 REST_FRAMEWORK = {
@@ -108,6 +110,7 @@ MIDDLEWARE = [
 
     'corsheaders.middleware.CorsMiddleware',
     # 'django.middleware.common.CommonMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'CorgyConnect.urls'
@@ -148,8 +151,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'CorgyConnect',
         'USER': 'postgres',
-        'PASSWORD': 'admin',
-        'HOST': 'localhost',
+        'PASSWORD': 'no pass bro!',
+        'HOST': 'no pass bro',
         'PORT': '5432',
     }
 }
@@ -198,7 +201,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 MEDIA_URL = '/images/'
 
 STATICFILES_DIRS = [
@@ -206,7 +209,16 @@ STATICFILES_DIRS = [
 ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# AWS s3bucket and iam config
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_ACCESS_KEY_ID ="no pass bro"
+AWS_SECRET_ACCESS_KEY ="no pass bro"
+AWS_STORAGE_BUCKET_NAME = "no pass bro"
+AWS_QUERYSTRING_AUTH = False  # obcinanie z url hashu zdjecia
+AWS_S3_FILE_OVERWRITE = False # mozliwosc dodania zdjecia o tej samej nazwie (override)
