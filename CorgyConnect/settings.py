@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure--m4+5=jewt)8q^q8#dc^@t=-$-ubff2$jkg7f_elfw_k_&ox$(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'corgyconnect-a9e73c3ccbf7.herokuapp.com']
 
 
 # Application definition
@@ -151,8 +151,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'CorgyConnect',
         'USER': 'postgres',
-        'PASSWORD': 'no pass bro!',
-        'HOST': 'no pass bro',
+        'PASSWORD': 'Mateuszek1!',
+        'HOST': 'database-1.c5kuqsya867b.eu-north-1.rds.amazonaws.com',
         'PORT': '5432',
     }
 }
@@ -217,8 +217,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # AWS s3bucket and iam config
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-AWS_ACCESS_KEY_ID ="no pass bro"
-AWS_SECRET_ACCESS_KEY ="no pass bro"
-AWS_STORAGE_BUCKET_NAME = "no pass bro"
+AWS_ACCESS_KEY_ID ="AKIATCKATDANELJOPS7I"
+AWS_SECRET_ACCESS_KEY ="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"
+AWS_STORAGE_BUCKET_NAME = "corgyconnect-bucket"
 AWS_QUERYSTRING_AUTH = False  # obcinanie z url hashu zdjecia
 AWS_S3_FILE_OVERWRITE = False # mozliwosc dodania zdjecia o tej samej nazwie (override)
+
+if os.getcwd() == '/app':
+    DEBUG = False
