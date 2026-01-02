@@ -20,7 +20,7 @@ Here're some of the project's best features:
 <h2>🛠️ Installation Steps:</h2>
 
 <p>1. Clone the Repository</p>asdasd
-
+a
 ```
 git clone https://github.com/Zenkovsky03/CorgyConnect.git cd CorgyConnect
 ```
