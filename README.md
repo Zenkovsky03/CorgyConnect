@@ -3,7 +3,7 @@
 <p align="center"><img src="https://socialify.git.ci/Zenkovsky03/CorgyConnect/image?description=1&amp;font=Source%20Code%20Pro&amp;language=1&amp;name=1&amp;owner=1&amp;theme=Dark" alt="project-image"></p>
 
 <p id="description">A web application for animal lovers focused on backend support (CRUD request). Allows intuitive management of animal data. The application Is integrated with Amazon S3 Bucket RDS database and has a written API</p>
-
+a
   a
   
 <h2>🧐 Features</h2>
