@@ -13,7 +13,7 @@ Here're some of the project's best features:
 *   User Authentication: Secure user registration login and profile management.
 *   Dog Profiles: Create view and manage comprehensive profiles for dogs.
 *   Community Interaction: Share experiences tips and connect with fellow dog lovers.
-*   API Integration: RESTful APIs for seamless data management and integration.
+*   API Integration: RESTful APIs for seamless data management and integration.a
 *   Responsive Design: Optimized for various devices ensuring a consistent user experience.
 *   AWS Integration: Utilizes AWS S3 for efficient file storage and AWS RDS for reliable database management.
 
