@@ -8,7 +8,7 @@ a
   
 <h2>🧐 Features</h2>
 
-Here're some of the project's best features:
+Here're some of the project's best features:a
 
 *   User Authentication: Secure user registration login and profile management.
 *   Dog Profiles: Create view and manage comprehensive profiles for dogs.
